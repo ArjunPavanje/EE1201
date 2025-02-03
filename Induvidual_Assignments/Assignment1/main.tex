@@ -1,0 +1,222 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{circuitikz}
+\usepackage{enumitem}
+\usepackage{pifont}
+
+\title{Assignment 1}
+\author{Arjun Pavanje\\EE24BTECH11005\\Group 9}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item[1.5] Determine the base of the numbers in each case for the following operations to be correct:
+\begin{enumerate}
+  \item $\frac{67}{5} = 11$ \\
+  \item $15 \times 3 = 51$\\
+  \item $123 + 120 = 303$
+\end{enumerate} 
+\textbf{Solution:}\newline
+\begin{enumerate}
+  \item We can rewrite the equation as $67 = 11 \times 5$. Say the base of the numbers is $b$. Converting everything to base-$10$ we can write,
+    \begin{align*}
+      67 &= 6 \times b^1 + 7 \times b^0 \\
+      11 &= 1 \times b^1 + 1\times b^0\\
+      5 &= 5 \times b^0
+    \end{align*}
+  Above equation becomes,
+    \begin{align*}
+      6b + 7 = (b + 1)5
+    \end{align*}
+    We get $b = -2$. Which is not possible. However, if we consider that the number $11$ is in base-$10$, we get,
+    \begin{align*}
+      6b + 7 = (11\times5) = 55
+    \end{align*}
+    We get $b$ = 8, i.e. Octal\newline
+    Base of numbers is $8$
+  \item Say the base of the numbers is $b$. Converting everything to base-$10$ we can write,
+    \begin{align*}
+      15 &= 1 \times b^1 + 5 \times b^0 \\
+      51 &= 5 \times b^1 + 1\times b^0\\
+      3 &= 3 \times b^0
+    \end{align*}
+  Above equation becomes,
+    \begin{align*}
+      (b + 5)3 = 5b + 1
+    \end{align*}
+    We get $b = 7$\newline
+    Base of numbers is $7$
+  \item Say the base of the numbers is $b$. Converting everything to base-$10$ can write,
+    \begin{align*}
+      123 &= 1 \times b^2 + 2 \times b^1 + 3 \times b^0 \\
+      120 &= 1 \times b^2 + 2 \times b^1 + 0\times b^0\\
+      303 &= 3 \times b^2 + 0 \times b^1 + 3\times b^0
+    \end{align*}
+  Above equation becomes,
+    \begin{align*}
+      (b^2 + 2b +3) + (b^2 + 2b) &= 3b^2 + 3\\
+      b^2 - 4b = (b-4)(b) &= 0
+    \end{align*}
+    We get $b = 4,0$, but since $b=0$ has no meaning, $b = 4$\newline
+    Base of numbers is $4$
+
+\end{enumerate}
+\item[1.6] The solutions to the quadratic equation $x^2-13x+22 = 0$ are $x = 7$ and $x = 2$. What is the base of the numbers?\newline
+\textbf{Solution}\newline
+Let the numbers be in base $b$ then, the equation in decimal system becomes,
+\begin{align*}
+  13 &= 1\times b^1+3\times b^0\\
+  22 &= 2\times b^1 + 2\times b^0\\
+  x^2 &- (b+3)x + (2b+2) = 0\\
+\end{align*}
+As $7_{10}$ and $2_{10}$ are the solutions
+\begin{align*}
+	7^2 - 7(b+3) + (2b+2) &= 0\\
+	2^2 - 2(b+3) + (2b+2) &= 0
+\end{align*}
+From the two equations we get,
+\begin{align*}
+  49 -21 +2 &= 5b\\
+    4-6+2 &= (2-2)b
+\end{align*}
+The value of $k$ can be anything for $x=2$ to be a solution and $k = 6$ for $x=7$ to be the solution.\newline
+Base of numbers is $6$ for $x=7$ to be a solution, and can be anything for $x=2$ to be a solution.
+
+\item[1.31] How many printing characters are there in ASCII? How many of them are special characters (not letters or numerals)?\newline
+\textbf{Solution:}\newline
+There are $95$ printing characters in ASCII out of which $33$ are special characters (not letters or numerals).
+\item[1.32] What bit must be complemented to change an ASCII letter from capital to lowercase and vice versa?\newline
+\textbf{Solution:}\newline
+The ASCII values for uppercase and lowercase English letters are,
+\begin{itemize}
+    \item[\ding{105}] Uppercase letters have ASCII values from $65$ to $90$.
+    \item[\ding{105}] Lowercase letters have ASCII values from $97$ to $122$.
+\end{itemize}
+\begin{itemize}
+\item[\ding{221}] In binary form, the ASCII values are represented using 7 bits. We notice that the difference in ASCII values of an alphabet in its Lowercase and Uppercase form is 32. 
+\item[\ding{221}] So if we subtract the ASCII form of any Lowercase alphabet by 32 (or $(100000)_2$ in binary) we get its Uppercase form. To convert from Uppercase to Lowercase, just add $32$(or $(100000)_2$ in binary) to the ASCII value of the Uppercase alphabet.
+\item[\ding{221}] We notice that this turns out to be just flipping (complementing) the $6^{th}$ bit.
+  \end{itemize}
+  We shall verify this with an example,
+  \begin{itemize}
+    \item[\ding{105}] 'A' is represented as $1000001$ in ASCII binary.
+    \item [\ding{105}]'a' is represented as $1100001$ in ASCII binary.
+\end{itemize}
+We can notice that they only differ in their $6^{th}$ bit.\newline
+To convert an ASCII alphabet from upper to lowercase or vice-versa, just complement (flip) the $6^{th}$ bit.
+  \item[1.14] Obtain the $1$'s and $2$'s complements of the following binary numbers:
+\begin{enumerate}
+    \item[(a)] $11100010$
+    \item[(b)] $00011000$
+    \item[(c)] $10111101$
+    \item[(d)] $10100101$
+    \item[(e)] $11000011$
+    \item[(f)] $01011000$
+\end{enumerate} 
+\textbf{Solution:}\newline
+\begin{itemize}
+    \item[\ding{221}] $x$'s complement of a number $N$ in base $r$ having $n$ digits is defined as $(r^n - x) - N$
+    \item[\ding{221}] To take $1$'s complement of a binary number just subtract the binary number of $n$ digits from the binary equivalent of $2^n$. This comes out to be, just replacing $1$'s with $0$'s, and the $0$'s with $1$'s in the original number.
+    \item[\ding{221}] $2$'s complement of a binary number is just $1$ added to its $1$'s complement
+\end{itemize}
+\begin{enumerate}
+    \item[(a)] $11100010$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $00011101$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+                    \quad \text{\small 1} \phantom{0}\\
+                    \phantom{+}00011101 \\
+                    +\quad 1 \\
+                    \hline
+                    00011110 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $00011110$
+        \end{itemize}
+
+    \item[(b)] $00011000$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $11100111$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+                    \quad \text{\small 111}\phantom{0} \\
+                    \phantom{+}11100111 \\
+                    +\quad 1 \\
+                    \hline
+                    11101000 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $11101000$
+        \end{itemize}
+
+    \item[(c)] $10111101$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $01000010$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+                    \phantom{+}01000010 \\
+                    +\quad 1 \\
+                    \hline
+                    01000011 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $01000011$
+        \end{itemize}
+
+    \item[(d)] $10100101$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $01011010$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+                    \phantom{+}01011010 \\
+                    +\quad 1 \\
+                    \hline
+                    01011011 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $01011011$
+        \end{itemize}
+
+    \item[(e)] $11000011$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $00111100$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+                    \phantom{+}00111100 \\
+                    +\quad 1 \\
+                    \hline
+                    00111101 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $00111101$
+        \end{itemize}
+
+    \item[(f)] $01011000$
+        \begin{itemize}
+            \item[\ding{221}] 1’s complement: $10100111$
+            \item[\ding{105}] Adding 1:
+                  \[
+                  \begin{array}{r}
+
+                    \quad \text{\small 111}\phantom{0}\\
+                    \phantom{+}10100111 \\
+                    +\quad 1 \\
+                    \hline
+                    10101000 \\
+                  \end{array}
+                  \]
+            \item[\ding{221}] 2’s complement: $10101000$
+        \end{itemize}
+\end{enumerate}
+\end{enumerate}
+\end{document}
